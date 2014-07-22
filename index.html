@@ -1,0 +1,175 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Visa, Who Killed Kenny?</title>
+	<meta name="author" content="Anthony Ferlazzo">
+	<meta name="description" content="test -- who killed kenny?">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale = 1.0, user-scalable = no, minimum-scale = 1.0, maximum-scale = 1.0">
+
+	<style>
+		body {
+			background-color: #000;
+			color: #fff;
+			font-family: arial, sans-serif;
+		}
+		header, footer{
+			margin: 0 50px;
+		}
+		.lineup, .newLineup{
+			height: 250px;
+			width: 100%;
+			text-align: center;
+			min-height: 150px;
+			height: auto;
+		}
+		.lineup:hover .suspectContainer{
+			opacity: 0.3;
+		}
+		hr{
+			width: 90%;
+			background-color: #fff;
+			height: 2px;
+		}
+		h2{
+			font-size: 1em;
+		}
+		.suspect{
+			border:1px solid #000;
+			border-radius: 10px;
+			background-image: url("i/characters-sprite.png");
+			width: 100px;
+			height: 150px;
+		}
+
+		/* sprite order: stan 0, tweek 103, kyle 205, cartman 309, wendy 412, ike 515, kenny 618 */
+		/* notice sprite is imperfectly spaced, not exactly 103px apart */
+		#stan div{
+			background-position: 0 0;
+		}
+		#kyle div{
+			background-position: -207px 0;
+		}
+		#kenny div{
+			background-position: -619px 0;
+		}
+		#cartman div{
+			background-position: -310px 0;
+		}
+		#wendy div{
+			background-position: -413px 0;
+		}
+		#ike div{
+			background-position: -517px 0;
+		}
+		#tweek div{
+			background-position: -105px 0;
+		}
+		#stan:hover,
+		#kyle:hover,
+		#kenny:hover,
+		#cartman:hover,
+		#wendy:hover,
+		#ike:hover,
+		#tweek:hover{
+			opacity: 1;
+		}
+		.suspectContainer{
+			position: relative;
+			background-color: #fff;
+			border: 1px solid #000;
+			border-radius: 10px;
+			display: inline-block;
+			margin: 30px 10px;
+			padding: 10px;
+		}
+		.suspectContainer p{
+			color: #000;
+			margin: 0;
+			text-align: center;
+		}
+		.buttonDiv{
+			text-align: right;
+			margin: 20px 50px 40px 0;
+		}
+		#saveBtn{
+			color: #fff;
+			background-color: #0000CC;
+			margin-left: 15px;
+		}
+	</style>
+</head>
+
+
+<body>
+	<header>
+		<div>
+			<h1>Who Killed Kenny?</h1>
+			<h2>Here are the suspects. Your job is to sort them from who you think is
+			the most likely to the least likely by clicking on the suspect</h2>
+		</div>
+	</header>
+
+	<!-- page display order stan, kyle, kenny, cartman, wendy, ike, tweek -->
+	<div class='lineup'>
+		<div id='stan' class='suspectContainer'>
+			<div class='suspect'></div>
+			<p>stan</p>
+		</div>
+		<div id='kyle' class='suspectContainer'>
+			<div class='suspect'></div>
+			<p>kyle</p>
+		</div>
+		<div id='kenny' class='suspectContainer'>
+			<div class='suspect'></div>
+			<p>kenny</p>
+		</div>
+		<div id="cartman" class='suspectContainer'>
+			<div class='suspect'></div>
+
+		<!-- capitalize name -->
+			<p>Cartman</p>
+		</div>
+		<div id='wendy' class='suspectContainer'>
+			<div class='suspect'></div>
+				<p>wendy</p>
+		</div>
+		<div id='ike' class='suspectContainer'>
+			<div class='suspect'></div>
+			<p>ike</p>
+		</div>
+		<div id='tweek' class='suspectContainer'>
+			<div class='suspect'></div>
+			<p>tweek</p>
+		</div>
+	</div>
+	<hr>
+	<div class='newLineup'></div>
+	<footer>
+		<div class='buttonDiv'>
+			<button id='resetBtn' type='reset'>Reset</button>
+			<button id='saveBtn' type='submit'>Save</button>
+		</div>
+	</footer>
+	<script src="js/jquery-1.9.1.min.js"></script>
+
+	<script>
+		$('document').ready(function(){
+
+			// Clicking on a suspect should move it to
+			// the newLineup area beneath the existing block of suspects
+			$('.suspectContainer').click(function(){
+				$(this).appendTo('.newLineup');
+			});
+
+			// Clicking on the cancel button causes the page to reload and
+			// return the lineup to its original format
+			$("#resetBtn").click(function(e){
+				e.preventDefault();
+				window.location="";
+			});
+		});
+	</script>
+</body>
+</html>
